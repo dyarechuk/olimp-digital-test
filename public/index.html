@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Funnel</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="analytics.js"></script>
+    <script>
+        // Initialize analytics - change provider and config as needed
+        // For Google Analytics: Analytics.init('google', { measurementId: 'G-XXXXXXXXXX' });
+        // For console logging (default): Analytics.init('console');
+        Analytics.init('console');
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="quiz-screen active" id="screen1">
+            <h1>Question 1</h1>
+            <p>What is your primary goal?</p>
+            <div class="options">
+                <button class="option-btn" data-value="lose-weight">Lose Weight</button>
+                <button class="option-btn" data-value="gain-muscle">Gain Muscle</button>
+                <button class="option-btn" data-value="improve-health">Improve Health</button>
+            </div>
+        </div>
+
+        <div class="quiz-screen" id="screen2">
+            <h1>Question 2</h1>
+            <p>How often do you exercise?</p>
+            <div class="options">
+                <button class="option-btn" data-value="never">Never</button>
+                <button class="option-btn" data-value="1-2-times">1-2 times/week</button>
+                <button class="option-btn" data-value="3-5-times">3-5 times/week</button>
+                <button class="option-btn" data-value="daily">Daily</button>
+            </div>
+        </div>
+
+        <div class="quiz-screen" id="screen3">
+            <h1>Question 3</h1>
+            <p>What is your experience level?</p>
+            <div class="options">
+                <button class="option-btn" data-value="beginner">Beginner</button>
+                <button class="option-btn" data-value="intermediate">Intermediate</button>
+                <button class="option-btn" data-value="advanced">Advanced</button>
+            </div>
+        </div>
+
+        <div class="quiz-screen" id="loading">
+            <div class="loading-spinner"></div>
+            <p>Creating your personalized plan...</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
