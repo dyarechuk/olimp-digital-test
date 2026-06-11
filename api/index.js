@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { v4: uuidv4 } = require('uuid');
-const { checkoutLimiter, apiLimiter } = require('./middleware/rateLimiter');
+const { checkoutLimiter, apiLimiter } = require('../middleware/rateLimiter');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -151,9 +151,12 @@ app.get('/cancel', (req, res) => {
     `);
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+// For local development
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`);
+    });
+}
 
 // Export for Vercel serverless
 module.exports = app;
