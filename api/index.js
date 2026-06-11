@@ -18,7 +18,11 @@ if (!process.env.STRIPE_PRICE_ID) {
 }
 
 app.use(express.json({ limit: '1mb' }));
-app.use(express.static('public'));
+
+// Static files are served by Vercel routes, not Express
+if (process.env.NODE_ENV !== 'production') {
+    app.use(express.static('public'));
+}
 
 app.use('/api/', apiLimiter);
 
@@ -149,6 +153,10 @@ app.get('/cancel', (req, res) => {
         </body>
         </html>
     `);
+});
+
+app.get('/', (req, res) => {
+    res.redirect('/index.html');
 });
 
 // For local development

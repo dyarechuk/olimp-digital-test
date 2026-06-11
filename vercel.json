@@ -1,13 +1,39 @@
 {
   "version": 2,
-  "rewrites": [
+  "builds": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api"
+      "src": "api/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/api/index.js"
     },
     {
-      "source": "/(.*)",
-      "destination": "/api"
+      "src": "/webhook",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/create-checkout-session",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/success",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/cancel",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
     }
   ]
 }
